@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+
+    <style>
+        .content {
+            margin-top: 100vh;
+            /* header + banner visual height */
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            z-index: 10;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 90px;
+            /* icon-only width */
+            height: 100vh;
+
+            background: transparent;
+            padding: 20px 10px;
+
+            overflow-y: auto;
+            transition: width 0.3s ease;
+        }
+
+        /* EXPAND ON HOVER */
+        .sidebar:hover {
+            width: 220px;
+        }
+
+        /* hide scrollbar */
+        .sidebar::-webkit-scrollbar {
+            width: 0;
+        }
+
+        .sidebar {
+            scrollbar-width: none;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin: 14px 0;
+        }
+
+        /* LINKS */
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 12px;
+            color: #b3b3b3;
+            text-decoration: none;
+            border-radius: 8px;
+
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .sidebar a i {
+            font-size: 20px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* TEXT HIDDEN BY DEFAULT */
+        .sidebar a span {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        /* SHOW TEXT WHEN SIDEBAR IS HOVERED */
+        .sidebar:hover a span {
+            opacity: 1;
+        }
+
+        /* HOVER EFFECT */
+        .sidebar a:hover {
+            background: #1f1f1f;
+            color: #fff;
+        }
+
+        /* HEADER */
+        .header {
+            position: relative;
+            height: 250px;
+            background: #000;
+            z-index: 3;
+        }
+
+
+
+        /* SIDEBAR ABOVE HEADER */
+        .sidebar {
+            z-index: 10;
+            /* ABOVE HEADER */
+        }
+
+        .header-content {
+            display: flex;
+            height: 100%;
+            width: 95%;
+            background-color: #1b1b1b;
+        }
+
+        /* LEFT IMAGE */
+        .header-left {
+            width: 50%;
+            height: 100%;
+        }
+
+        .header-left img {
+            padding-left: 100px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* RIGHT CONTENT */
+        .header-right {
+            width: 50%;
+            padding: 40px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            color: #fff;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        #logo {
+            width: 40px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* TEXT */
+        .bold-text {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .normal-text {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 16px;
+        }
+
+        .trailer-btn {
+            width: fit-content;
+            padding: 10px 18px;
+
+            background: linear-gradient(to right, #0066ff, #ff007a);
+            /* ✅ FIX */
+            color: #fff;
+            /* text must be white on gradient */
+
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .trailer-btn:hover {
+            background: #e5e5e5;
+        }
+
+        body {
+            margin: 0;
+            background: #000;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        /* BANNER */
+        .hotstar-banner {
+            position: relative;
+            height: 500px;
+            /* adjust height as needed */
+            background: url('deshpande.jpg') center/cover no-repeat;
+            color: #fff;
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 100px;
+            left: 50px;
+            max-width: 520px;
+            z-index: 10;
+            padding-left: 100px;
+        }
+
+        .hotstar-specials {
+            color: #00baff;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .hotstar-specials span {
+            color: #fff;
+        }
+
+        .series-title {
+            font-size: 45px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            color: #faf2dc;
+        }
+
+        .sponsor-logos img {
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .new-release {
+            color: #00a6ff;
+            font-weight: bold;
+            margin: 15px 0 5px 0;
+        }
+
+        .series-info {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .genres {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .banner-text .watch-btn {
+            background: linear-gradient(to right, #0066ff, #ff007a);
+            color: #fff;
+        }
+
+
+        .watch-btn:hover {
+            opacity: 0.85;
+        }
+
+
+        /* .bg-image {
+            position: fixed;
+            top: 0;
+            left: 100px;
+            width: 100%;
+            height: 590px;
+
+            background: url("deshpande.jpg") center/cover no-repeat;
+            z-index: -1;
+
+            transition: opacity 1s ease;
+        }
+
+   
+        .bg-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        } */
+
+
+        .bg-image,
+        .bg-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            transition: opacity 1s ease;
+
+
+            filter: none !important;
+            image-rendering: auto;
+
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+
+        .bg-image {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .bg-video {
+            opacity: 0;
+            z-index: 2;
+        }
+
+        */ .banner-bg {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right,
+                    rgba(0, 0, 0, 0),
+                    rgba(0, 0, 0, 0));
+            z-index: 3;
+            pointer-events: none;
+
+            transition: background 0.6s ease;
+        }
+
+
+
+        /* HOTSTAR TEXT STYLE */
+        .tag {
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: #e2dcdc;
+        }
+
+        .tag span {
+            color: #37f2ff;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .mrs {
+            font-size: 20px;
+            vertical-align: super;
+        }
+
+        .meta {
+            color: #ccc;
+            margin-bottom: 16px;
+        }
+
+        .watch-btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        /* SCROLL CONTENT */
+        .content {
+            position: relative;
+            z-index: 5;
+            margin-top: 100vh;
+            padding: 40px;
+            background: #000;
+            color: #fff;
+        }
+
+        .documentry {
+            position: relative;
+            padding: 15px 0;
+        }
+
+        /* DOCUMENTARY HEADER */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .doc-header h2 {
+            color: white;
+            margin-left: 100px;
+            font-size: 20px;
+        }
+
+        /* ARROWS */
+        .doc-arrows {
+            display: flex;
+            gap: 10px;
+        }
+
+        .doc-arrow {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            padding: 6px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .doc-arrow:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        /* WRAPPER */
+        .doc-wrapper {
+            overflow-x: auto;
+            /* ✅ REQUIRED */
+            overflow-y: hidden;
+            padding: 25px 0;
+
+            scroll-behavior: smooth;
+        }
+
+        /* hide scrollbar */
+        .doc-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        /* FLEX RAIL */
+        .doc-flex {
+            display: flex;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* CARD (BIGGER) */
+        .doc-card {
+            position: relative;
+            width: 200px;
+            height: 260px;
+            flex-shrink: 0;
+            cursor: pointer;
+
+            transition: transform 0.3s ease, z-index 0.3s ease;
+        }
+
+        /* ONLY first card */
+        .doc-card:first-child {
+            margin-left: 100px;
+        }
+
+        .doc-card:hover {
+            transform: scale(1.07);
+            z-index: 10;
+        }
+
+        .doc-card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            object-fit: cover;
+        }
+
+        /* POPUP (BIGGER) */
+        .popup {
+            position: absolute;
+            inset: -20px;
+            background-image: var(--bg);
+            background-size: cover;
+            background-position: center;
+
+
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            border-radius: 16px;
+            overflow: hidden;
+
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+
+            color: #fff;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* SHOW POPUP */
+        .doc-card:hover .popup {
+            opacity: 1;
+            transform: scale(1.2);
+            pointer-events: auto;
+
+        }
+
+
+        /* DARK OVERLAY */
+        .popup::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.9),
+                    rgba(0, 0, 0, 0.25));
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        /* POPUP TEXT */
+        .popup h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .popup p {
+            font-size: 13px;
+            color: #ddd;
+            margin-bottom: 8px;
+        }
+
+        /* BUTTON */
+        .popup button {
+            background-color: white;
+            border: none;
+            color: #000000;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .view-all {
+            color: #9aa7b2;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: 0.3s ease;
+        }
+
+        /* SHOW ON HOVER */
+        .documentry:hover .view-all {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .doc-arrow {
+            position: absolute;
+            top: 55%;
+            transform: translateY(-50%);
+            z-index: 20;
+
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: #fff;
+            font-size: 28px;
+
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+
+        /* LEFT & RIGHT POSITION */
+        .doc-arrow.left {
+            left: 10px;
+        }
+
+        .doc-arrow.right {
+            right: 10px;
+        }
+
+        /* SHOW ARROWS ON HOVER */
+        .documentry:hover .doc-arrow {
+            opacity: 1;
+        }
+
+        .documentry:hover .doc-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* keep arrows visible when JS adds active */
+        .documentry.show-arrows .doc-arrow {
+            opacity: 1;
+        }
+
+        .popup-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        /* Watch Now */
+        .popup .watch-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 12px 22px;
+            border-radius: 8px;
+            border: none;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            background: rgb(231, 229, 229);
+            color: #000000;
+
+            cursor: pointer;
+        }
+
+
+
+        /* + Watchlist button */
+        .watchlist-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .watchlist-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+
+
+        /* TOP 10 RANKING STYLE */
+        .top-rank::before {
+            content: attr(data-rank);
+            position: absolute;
+            bottom: 8px;
+            left: 10px;
+
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(0, 0, 0, 0.9);
+
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Slight overlap effect like Hotstar */
+        .top-rank img {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-link {
+            all: unset;
+            /* 🔥 removes ALL anchor default styles */
+            display: inline-block;
+            /* behaves like a div */
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .site-footer {
+            background: #000;
+            color: #b3b3b3;
+            padding: 40px 60px;
+            margin-left: 100px;
+            font-size: 16px;
+        }
+
+        /* GRID */
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        /* COLUMNS */
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #b3b3b3;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        /* SOCIAL */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #b3b3b3;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* BOTTOM BAR */
+        .footer-bottom {
+            margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom a {
+            color: #b3b3b3;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="searchjio.html"><i class=" fa-solid fa-magnifying-glass"></i><span>Search</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-tv"></i><span>TV</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-film"></i><span>Movies</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-person-running"></i><span>Sports</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-bolt"></i><span>Sparks</span></a></li>
+            <li><a href="category.html"><i class="fa-solid fa-layer-group"></i><span>Categories</span></a></li>
+            <li><a href="myspace.html"><i class="fa-solid fa-user"></i><span>My Space</span></a></li>
+        </ul>
+    </div>
+    <div class="header">
+        <div class="header-content">
+
+            <!-- LEFT IMAGE -->
+            <div class="header-left">
+                <img src="headindvsnz.jpg" alt="Banner">
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="header-right">
+                <div class="logo-row">
+                    <img src="jiohotstar.jpg" alt="logo" id="logo">
+                    <span class="logo-text">JioHotstar</span>
+                </div>
+
+                <p class="bold-text">Watch movies, TV shows, and more</p>
+                <p class="normal-text">Stream anywhere. Anytime.</p>
+
+                <a href="indvsnz.mp4" target="_blank">
+                    <button class="trailer-btn">
+                        <i class="fa-solid fa-play"></i> Trailer
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="hotstar-banner" id="banner">
+        <div class="banner-bg">
+            <img src="deshpande.jpg" class="bg-image">
+            <video class="bg-video" src="deshpande.mp4" muted></video>
+            <div class="banner-overlay"></div>
+        </div>
+        <div class="banner-text">
+            <p class="hotstar-specials">hotstar <span>specials</span></p>
+            <br>
+            <h1 class="series-title">Mrs Deshpande</h1>
+
+            <div class="sponsor-logos">
+                <img src="mastercard.jpg" alt="Mastercard">
+                <img src="kotak.jpg" alt="Kotak">
+                <img src="vivo.jpg" alt="Vivo">
+            </div>
+            <br>
+
+            <p class="new-release">New Release</p>
+
+            <p class="series-info">
+                2025 &bull; U/A 16+ &bull; 1 Season &bull; 7 Languages
+            </p>
+            <br>
+            <p class="description">
+                Behind a mask of beauty lies a darkness she's ready to unleash.
+            </p>
+            <br>
+            <p class="genres">
+                <strong>Thriller</strong> | <strong>Crime</strong> | <strong>Mystery</strong> |
+                <strong>Psychological</strong>
+            </p>
+
+            <a href="deshpande.html" class="watch-link">
+                <button class="watch-btn">
+                    <i class="fa fa-play"></i> Watch Now
+                </button>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="documentry" id="doc-rail">
+        <div class="doc-header">
+            <h2>Documentary Shows</h2>
+
+            <a href="#" class="view-all">View All ❯</a>
+        </div>
+
+
+        <div class="doc-wrapper">
+            <div class="doc-flex">
+
+                <!-- CARD -->
+                <div class="doc-card" style="--bg:url('./images/doc1.jpg')">
+                    <img src="./images/doc1.jpg" alt="doc">
+
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <a href="vantara.html" class="btn-link">
+                                <button class="watch-btn">▶ Watch Now</button>
+                            </a>
+
+
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Planet Earth</h3>
+                        <p>2025 • U • English</p>
+                        <p>Explore our planet’s beauty.</p>
+                    </div>
+
+                </div>
+
+
+
+                <!-- COPY SAME CARD STRUCTURE -->
+                <div class="doc-card" style="--bg:url('./images/doc2.jpg')">
+                    <img src="./images/doc2.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Chef Diaries</h3>
+                        <p>2024 • Hindi</p>
+                        <p>India’s food stories.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc3.jpg')">
+                    <img src="./images/doc3.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc4.jpg')">
+                    <img src="./images/doc4.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc5.jpg')">
+                    <img src="./images/doc5.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc6.jpg')">
+                    <img src="./images/doc6.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc7.jpg')">
+                    <img src="./images/doc7.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc8.jpg')">
+                    <img src="./images/doc8.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc9.jpg')">
+                    <img src="./images/doc9.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc10.jpg')">
+                    <img src="./images/doc10.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc11.jpg')">
+                    <img src="./images/doc11.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+                <!-- add more cards as needed -->
+
+            </div>
+            <button class="doc-arrow left">&#10094;</button>
+            <button class="doc-arrow right">&#10095;</button>
+        </div>
+    </div>
+    <!-- document ended-->
+    <div class="documentry" id="doc-rail">
+        <div class="doc-header">
+            <h2>Kid's Corner</h2>
+
+            <a href="#" class="view-all">View All ❯</a>
+        </div>
+
+
+        <div class="doc-wrapper">
+            <div class="doc-flex">
+                <div class="doc-card" style="--bg:url('./images/doc12.jpg')">
+                    <img src="./images/doc12.jpg" alt="doc">
+
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Planet Earth</h3>
+                        <p>2025 • U • English</p>
+                        <p>Explore our planet’s beauty.</p>
+                    </div>
+
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc13.jpg')">
+                    <img src="./images/doc13.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Chef Diaries</h3>
+                        <p>2024 • Hindi</p>
+                        <p>India’s food stories.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc14.jpg')">
+                    <img src="./images/doc14.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc15.jpg')">
+                    <img src="./images/doc15.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc16.jpg')">
+                    <img src="./images/doc16.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc17.jpg')">
+                    <img src="./images/doc17.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc18.jpg')">
+                    <img src="./images/doc18.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc19.jpg')">
+                    <img src="./images/doc19.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc20.jpg')">
+                    <img src="./images/doc20.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc21.jpg')">
+                    <img src="./images/doc21.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc22.jpg')">
+                    <img src="./images/doc22.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+                <div class="doc-card" style="--bg:url('./images/doc23.jpg')">
+                    <img src="./images/doc23.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+                <!-- add more cards as needed -->
+
+            </div>
+            <button class="doc-arrow left">&#10094;</button>
+            <button class="doc-arrow right">&#10095;</button>
+        </div>
+    </div>
+
+
+    <!--kid corner end-->
+    <div class="documentry" id="doc-rail">
+        <div class="doc-header">
+            <h2>Hard Hitting Movies</h2>
+
+            <a href="#" class="view-all">View All ❯</a>
+        </div>
+
+
+        <div class="doc-wrapper">
+            <div class="doc-flex">
+                <div class="doc-card" style="--bg:url('./images/doc24.jpg')">
+                    <img src="./images/doc24.jpg" alt="doc">
+
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Planet Earth</h3>
+                        <p>2025 • U • English</p>
+                        <p>Explore our planet’s beauty.</p>
+                    </div>
+
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc25.jpg')">
+                    <img src="./images/doc25.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Chef Diaries</h3>
+                        <p>2024 • Hindi</p>
+                        <p>India’s food stories.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc26.jpg')">
+                    <img src="./images/doc26.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc27.jpg')">
+                    <img src="./images/doc27.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc28.jpg')">
+                    <img src="./images/doc28.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc29.jpg')">
+                    <img src="./images/doc29.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc30.jpg')">
+                    <img src="./images/doc30.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc31.jpg')">
+                    <img src="./images/doc31.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc32.jpg')">
+                    <img src="./images/doc32.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc33.jpg')">
+                    <img src="./images/doc33.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card" style="--bg:url('./images/doc34.jpg')">
+                    <img src="./images/doc34.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+                <div class="doc-card" style="--bg:url('./images/doc35.jpg')">
+                    <img src="./images/doc35.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+                <!-- add more cards as needed -->
+
+            </div>
+            <button class="doc-arrow left">&#10094;</button>
+            <button class="doc-arrow right">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- hard hitted movie end-->
+
+    <div class="documentry" id="doc-rail">
+        <div class="doc-header">
+            <h2>Top 10 in INDIA Today- Hindi</h2>
+
+            <a href="#" class="view-all">View All ❯</a>
+        </div>
+
+
+        <div class="doc-wrapper">
+            <div class="doc-flex">
+                <div class="doc-card top-rank" data-rank="1" style="--bg:url('./images/doc36.jpg')">
+                    <img src="./images/doc36.jpg" alt="doc">
+
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Planet Earth</h3>
+                        <p>2025 • U • English</p>
+                        <p>Explore our planet’s beauty.</p>
+                    </div>
+
+                </div>
+
+                <div class="doc-card top-rank" data-rank="2" style="--bg:url('./images/doc37.jpg')">
+                    <img src="./images/doc37.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Chef Diaries</h3>
+                        <p>2024 • Hindi</p>
+                        <p>India’s food stories.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="3" style="--bg:url('./images/doc38.jpg')">
+                    <img src="./images/doc38.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="4" style="--bg:url('./images/doc39.jpg')">
+                    <img src="./images/doc39.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="5" style="--bg:url('./images/doc40.jpg')">
+                    <img src="./images/doc40.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="6" style="--bg:url('./images/doc41.jpg')">
+                    <img src="./images/doc41.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="7" style="--bg:url('./images/doc42.jpg')">
+                    <img src="./images/doc42.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="8" style="--bg:url('./images/doc43.jpg')">
+                    <img src="./images/doc43.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+                <div class="doc-card top-rank" data-rank="9" style="--bg:url('./images/doc44.jpg')">
+                    <img src="./images/doc44.jpg" alt="doc">
+                    <div class="popup">
+                        <div class="popup-actions">
+                            <button class="watch-btn">▶ Watch Now</button>
+
+                            <button class="watchlist-btn" title="Add to Watchlist">
+                                +
+                            </button>
+                        </div>
+                        <h3>Startup Stories</h3>
+                        <p>2025 • English</p>
+                        <p>From garage to global.</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <button class="doc-arrow left">&#10094;</button>
+            <button class="doc-arrow right">&#10095;</button>
+        </div>
+    </div>
+
+    <!--end top 10-->
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>View Website</h4>
+                <a href="#">English</a>
+                <a href="#">Help Center</a>
+                <a href="#">Share Feedback</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Need Help?</h4>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect with us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 JioHotstar. All rights reserved.</p>
+            <p>
+                <a href="#">Terms of Use</a> |
+                <a href="#">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+
+
+        // SELECT ELEMENTS
+        const banner = document.getElementById("banner");
+        const img = banner.querySelector(".bg-image");
+        const video = banner.querySelector(".bg-video");
+        const overlay = banner.querySelector(".banner-overlay");
+
+        // IMAGE → VIDEO AFTER 4s
+        setTimeout(() => {
+            img.style.opacity = "0";
+            video.style.opacity = "1";
+            video.play();
+        }, 4000);
+
+        // INTERSECTION OBSERVER (HOTSTAR STYLE)
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.intersectionRatio > 0.6) {
+                    // Mostly visible → CLEAR
+                    overlay.style.background =
+                        "linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0))";
+                    video.play();
+                }
+                else if (entry.intersectionRatio > 0.3) {
+                    // Scrolling → SOFT DARK
+                    overlay.style.background =
+                        "linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.2))";
+                }
+                else {
+                    // Almost gone → DARK
+                    overlay.style.background =
+                        "rgba(0,0,0,0.85)";
+                    video.pause();
+                }
+            },
+            {
+                threshold: [0, 0.3, 0.6, 1]
+            }
+        );
+
+        observer.observe(banner);
+
+        // OPTIONAL: Sidebar hover show/hide text (already handled in CSS)
+        // No JS needed unless you want extra animations
+
+
+        //arrow
+
+        // ELEMENTS
+        const section = document.querySelector(".documentry");
+        const wrapper = document.querySelector(".doc-wrapper");
+        const leftArrow = document.querySelector(".doc-arrow.left");
+        const rightArrow = document.querySelector(".doc-arrow.right");
+
+        const scrollAmount = 220;
+
+        function keepArrowsVisible() {
+            section.classList.add("show-arrows");
+
+            clearTimeout(section.arrowTimer);
+            section.arrowTimer = setTimeout(() => {
+                section.classList.remove("show-arrows");
+            }, 2000);
+        }
+
+        rightArrow.addEventListener("click", () => {
+            wrapper.scrollBy({
+                left: scrollAmount,
+                behavior: "smooth"
+            });
+            keepArrowsVisible();
+        });
+
+        leftArrow.addEventListener("click", () => {
+            wrapper.scrollBy({
+                left: -scrollAmount,
+                behavior: "smooth"
+            });
+            keepArrowsVisible();
+        });
+
+    </script>
+
+
+</body>
+
+</html>

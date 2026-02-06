@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Browse | JioHotstar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #2b002b, #0b0b0b 60%);
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        /* PAGE */
+        .page {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            min-height: 100vh;
+        }
+
+        /* ICON BAR */
+        .iconbar {
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            gap: 26px;
+        }
+
+        .iconbar i {
+            color: #aaa;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .iconbar i:hover {
+            color: #fff;
+        }
+
+        /* MAIN */
+        .main {
+            padding: 30px 40px;
+        }
+
+        /* TITLES */
+        .section-title {
+            margin-bottom: 14px;
+            font-size: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0 15px;
+        }
+
+        .section-header span {
+            color: #7aa7ff;
+            cursor: pointer;
+        }
+
+        /* BROWSE */
+        .browse-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .browse-card {
+            width: 220px;
+            height: 110px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #2a2a2a, #111);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .browse-card:hover {
+            transform: scale(1.05);
+        }
+
+        .sparks {
+            background: linear-gradient(135deg, #0f3a3a, #071b1b);
+        }
+
+        .news {
+            background: linear-gradient(135deg, #3a1f3a, #150915);
+        }
+
+        .tv {
+            background: linear-gradient(135deg, #1f2a4a, #0a1025);
+        }
+
+        .movies {
+            background: linear-gradient(135deg, #2b1f4a, #12091f);
+        }
+
+        .sports {
+            background: linear-gradient(135deg, #2b1f3a, #12091a);
+        }
+
+        /* STUDIOS */
+        .studio-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .studio-card {
+            width: 200px;
+            height: 120px;
+            background: #1a1d23;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .studio-card span {
+            color: #19e1ff;
+        }
+
+
+        .language-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .lang-card {
+            width: 200px;
+            height: 120px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 14px;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .lang-card span {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        .hindi {
+            background: linear-gradient(135deg, #2c335e, #161a2d);
+        }
+
+        .english {
+            background: linear-gradient(135deg, #8c3b2e, #3b1611);
+        }
+
+        .tamil {
+            background: linear-gradient(135deg, #6b3b2e, #301811);
+        }
+
+        .telugu {
+            background: linear-gradient(135deg, #3a3a3a, #181818);
+        }
+
+        .malayalam {
+            background: linear-gradient(135deg, #4a2a4a, #1f101f);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- LEFT ICON SIDEBAR -->
+        <aside class="iconbar">
+            <i class="fa-solid fa-house"></i> <a href="index.html" data-label="Home">
+                <i class="fa-solid fa-house"></i><a href="index.html" data-label="Home"></a>
+            </a>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-tv"></i>
+            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-person-running"></i>
+            <i class="fa-solid fa-video"></i>
+            <i class="fa-solid fa-layer-group"></i>
+            <i class="fa-solid fa-user"></i>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <!-- BROWSE -->
+            <h2 class="section-title">Browse</h2>
+            <div class="browse-row">
+                <div class="browse-card sparks">Sparks</div>
+                <div class="browse-card news">News</div>
+                <div class="browse-card tv">TV</div>
+                <div class="browse-card movies">Movies</div>
+                <div class="browse-card sports">Sports</div>
+            </div>
+
+            <!-- STUDIOS -->
+            <div class="section-header">
+                <h2>Studios</h2>
+                <span>View All ›</span>
+            </div>
+
+            <div class="studio-row">
+                <div class="studio-card">hotstar<br><span>specials</span></div>
+                <div class="studio-card">Disney+</div>
+                <div class="studio-card">HBO</div>
+                <div class="studio-card">peacock</div>
+                <div class="studio-card">Paramount+</div>
+            </div>
+
+            <!-- LANGUAGES -->
+            <h2 class="section-title">Popular Languages</h2>
+
+            <div class="language-row">
+                <div class="lang-card hindi">हिन्दी<br><span>Hindi</span></div>
+                <div class="lang-card english">English</div>
+                <div class="lang-card tamil">தமிழ்<br><span>Tamil</span></div>
+                <div class="lang-card telugu">తెలుగు<br><span>Telugu</span></div>
+                <div class="lang-card malayalam">മലയാളം<br><span>Malayalam</span></div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

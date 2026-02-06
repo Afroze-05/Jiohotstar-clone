@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0f0f0f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        /* MAIN LOGIN BOX */
+        .login-container {
+            background: #22001f;
+            width: 75%;
+            max-width: 900px;
+            padding: 50px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* TITLE */
+        .login-title {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        /* SUBTITLE */
+        .login-subtitle {
+            font-size: 16px;
+            color: #b3b3b3;
+            margin-bottom: 40px;
+        }
+
+        /* CONTENT ROW */
+        .login-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* LEFT QR SECTION */
+        .qr-section {
+            width: 50%;
+            text-align: center;
+        }
+
+        .qr-section img {
+            width: 180px;
+            margin-bottom: 15px;
+        }
+
+        .qr-text {
+            font-size: 14px;
+            color: #b3b3b3;
+            line-height: 1.4;
+        }
+
+        /* RIGHT PHONE SECTION */
+        .phone-section {
+            width: 50%;
+            text-align: left;
+        }
+
+        .phone-label {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #b3b3b3;
+        }
+
+        .phone-input {
+            display: flex;
+            align-items: center;
+            border: 1px solid #444;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .country-code {
+            background: #222;
+            padding: 14px 16px;
+            font-size: 16px;
+        }
+
+        .phone-input input {
+            flex: 1;
+            padding: 14px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background: #141414;
+            color: #fff;
+        }
+
+        .phone-input input::placeholder {
+            color: #777;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .login-content {
+                flex-direction: column;
+            }
+
+            .qr-section,
+            .phone-section {
+                width: 100%;
+                text-align: center;
+            }
+
+            .phone-section {
+                text-align: center;
+            }
+        }
+
+        /* SUBMIT BUTTON */
+        .submit-btn {
+            display: inline-block;
+            margin-top: 20px;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff2d55, #ff6a00);
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .submit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.5);
+            opacity: 0.9;
+        }
+
+        .submit-btn:disabled {
+            background: #444;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- TITLE -->
+        <div class="login-title">
+            Login or Sign up to continue
+        </div>
+
+        <!-- SUBTITLE -->
+        <div class="login-subtitle">
+            Scan QR code or enter phone number to login
+        </div>
+
+        <!-- CONTENT -->
+        <div class="login-content">
+
+            <!-- LEFT : QR -->
+            <div class="qr-section">
+                <img src="qr.jpg.png" alt="QR Code">
+                <p class="qr-text">
+                    Use camera app to scan QR.<br>
+                    Click on the link generated to redirect to<br>
+                    JioHotstar mobile app.
+                </p>
+            </div>
+
+            <!-- RIGHT : PHONE -->
+            <div class="phone-section">
+                <div class="phone-label">
+                    Enter your mobile number
+                </div>
+
+                <div class="phone-input">
+                    <div class="country-code">+91</div>
+                    <form>
+                        <input type="tel" id="phone" name=" phone " placeholder="eg:1234567890" required
+                            autocomplete="off" pattern="\+91[6-9]{1}[0-9]{9}" title="10 digits">
+                    </form>
+                </div>
+
+                <a href="deshpande.html" class="submit-btn">Continue</a>
+
+
+                <p id="output"></p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

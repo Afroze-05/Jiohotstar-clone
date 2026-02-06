@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+
+    <style>
+        .content {
+            margin-top: 100vh;
+            /* header + banner visual height */
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            z-index: 10;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 90px;
+            /* icon-only width */
+            height: 100vh;
+
+            background: transparent;
+            padding: 20px 10px;
+
+            overflow-y: auto;
+            transition: width 0.3s ease;
+        }
+
+        /* EXPAND ON HOVER */
+        .sidebar:hover {
+            width: 220px;
+        }
+
+        /* hide scrollbar */
+        .sidebar::-webkit-scrollbar {
+            width: 0;
+        }
+
+        .sidebar {
+            scrollbar-width: none;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin: 14px 0;
+        }
+
+        /* LINKS */
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 12px;
+            color: #b3b3b3;
+            text-decoration: none;
+            border-radius: 8px;
+
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .sidebar a i {
+            font-size: 20px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* TEXT HIDDEN BY DEFAULT */
+        .sidebar a span {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        /* SHOW TEXT WHEN SIDEBAR IS HOVERED */
+        .sidebar:hover a span {
+            opacity: 1;
+        }
+
+        /* HOVER EFFECT */
+        .sidebar a:hover {
+            background: #1f1f1f;
+            color: #fff;
+        }
+
+        /* HEADER */
+        .header {
+            position: relative;
+            height: 250px;
+            background: #000;
+            z-index: 3;
+        }
+
+
+
+        /* SIDEBAR ABOVE HEADER */
+        .sidebar {
+            z-index: 10;
+            /* ABOVE HEADER */
+        }
+
+        .site-footer {
+            background: #000;
+            color: #b3b3b3;
+            padding: 40px 60px;
+            margin-left: 100px;
+            font-size: 16px;
+        }
+
+        /* GRID */
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        /* COLUMNS */
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #b3b3b3;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        /* SOCIAL */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #b3b3b3;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* BOTTOM BAR */
+        .footer-bottom {
+            margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom a {
+            color: #b3b3b3;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* PAGE GRID */
+        .page {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            min-height: 100vh;
+        }
+
+        /* ICON BAR */
+        .iconbar {
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            gap: 26px;
+        }
+
+        .iconbar i {
+            color: #888;
+            font-size: 22px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .iconbar i:hover {
+            color: #fff;
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            padding: 30px 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 20px;
+        }
+
+        .section-header span {
+            color: #1e90ff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ROWS */
+        .row {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .row::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .row::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .row::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        /* CARD BASE */
+        .browse-card,
+        .studio-card,
+        .lang-card,
+        .channel-card,
+        .genre-card,
+        .sport-card {
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 220px;
+            min-height: 140px;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .browse-card:hover,
+        .studio-card:hover,
+        .lang-card:hover,
+        .channel-card:hover,
+        .genre-card:hover,
+        .sport-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        /* BROWSE */
+        .sparks {
+            background: linear-gradient(135deg, #7a1f00, #4a0b00);
+        }
+
+        .news {
+            background: linear-gradient(135deg, #0f1a17, #1a2a25);
+        }
+
+        .tv {
+            background: linear-gradient(135deg, #120a0f, #1a050a);
+        }
+
+        .movies {
+            background: linear-gradient(135deg, #2a1b4a, #100717);
+        }
+
+        .sports {
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+        }
+
+        /* LANGUAGES */
+        .hindi {
+            background: linear-gradient(135deg, #804e0f, #4a2b00);
+        }
+
+        .english {
+            background: linear-gradient(135deg, #0a5544, #1a2e28);
+        }
+
+        .tamil {
+            background: linear-gradient(135deg, #7a1a3a, #3a0a1a);
+        }
+
+        .telugu {
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+        }
+
+        .malayalam {
+            background: linear-gradient(135deg, #4a1a4a, #1a0a1a);
+        }
+
+        /* IMAGE CARDS */
+        .studio-card,
+        .channel-card,
+        .sport-card {
+            display: flex;
+            align-items: flex-end;
+            /* text goes near bottom */
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            min-width: 220px;
+            min-height: 140px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .studio-card::before,
+        .channel-card::before,
+        .sport-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Text on top of image, moved slightly down */
+        .studio-card span,
+        .channel-card span,
+        .sport-card span {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            /* Move text a bit lower */
+            padding-bottom: 1px;
+        }
+
+
+        /* LANG CARD SPAN */
+        .lang-card span {
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="searchjio.html"><i class=" fa-solid fa-magnifying-glass"></i><span>Search</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-tv"></i><span>TV</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-film"></i><span>Movies</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-person-running"></i><span>Sports</span></a></li>
+            <li><a href="index.html"><i class="fa-solid fa-bolt"></i><span>Sparks</span></a></li>
+            <li><a href="category.html"><i class="fa-solid fa-layer-group"></i><span>Categories</span></a></li>
+            <li><a href="myspace.html"><i class="fa-solid fa-user"></i><span>My Space</span></a></li>
+        </ul>
+    </div>
+
+    <div class="page">
+
+        <!-- ICONBAR -->
+        <aside class="iconbar">
+            <i class="#"></i>
+            <i class="#"></i>
+            <i class="#"></i>
+            <i class="#"></i>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <!-- Browse -->
+            <h2 class="section-title">Browse</h2>
+            <div class="row">
+                <div class="browse-card sparks">Sparks</div>
+                <div class="browse-card news">News</div>
+                <div class="browse-card tv">TV</div>
+                <div class="browse-card movies">Movies</div>
+                <div class="browse-card sports">Sports</div>
+            </div>
+
+            <!-- Studios -->
+            <div class="section-header">
+                <h2>Studios</h2>
+                <span>View All ›</span>
+            </div>
+            <div class="row">
+                <div class="studio-card hotstar" style="background-image: url('./images/hotstar.jpg');">
+
+                </div>
+                <div class="studio-card disney" style="background-image: url('./images/disney.jpg');">
+
+                </div>
+                <div class="studio-card hbo" style="background-image: url('./images/hbo.jpg');">
+
+                </div>
+                <div class="studio-card peacock" style="background-image: url('./images/peacook.jpg');">
+
+                </div>
+                <div class="studio-card paramount" style="background-image: url('./images/paramount.jpg');">
+
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <h2 class="section-title">Popular Languages</h2>
+            <div class="row">
+                <div class="lang-card hindi">हिन्दी<br><span>Hindi</span></div>
+                <div class="lang-card english">English</div>
+                <div class="lang-card tamil">தமிழ்<br><span>Tamil</span></div>
+                <div class="lang-card telugu">తెలుగు<br><span>Telugu</span></div>
+                <div class="lang-card malayalam">മലയാളം<br><span>Malayalam</span></div>
+            </div>
+
+            <!-- Channels -->
+            <h2 class="section-title">Popular Channels</h2>
+            <div class="row">
+                <div class="channel-card starplus" style="background-image: url('./images/colors.jpg');">
+
+                </div>
+                <div class="channel-card starplus" style="background-image: url('./images/sonytv.jpg');">
+
+                </div>
+                <div class="channel-card starplus" style="background-image: url('./images/starplus.jpg');">
+
+                </div>
+                <div class="channel-card starplus" style="background-image: url('./images/starsports.jpg');">
+
+                </div>
+                <div class="channel-card starmarathi" style="background-image: url('./images/starmarathi.jpg');">
+
+                </div>
+                <div class="channel-card starbharat" style="background-image: url('./images/starbharat.jpg');">
+
+                </div>
+            </div>
+
+            <!-- Genres -->
+            <h2 class="section-title">Popular Genres</h2>
+            <div class="row">
+                <div class="genre-card romance">Romance</div>
+                <div class="genre-card drama">Drama</div>
+                <div class="genre-card family">Family</div>
+                <div class="genre-card reality">Reality</div>
+            </div>
+
+            <!-- Sports -->
+            <h2 class="section-title">Popular Sports</h2>
+            <div class="row">
+                <div class="sport-card cricket" style="background-image: url('./images/cricket.jpg');">
+
+                </div>
+                <div class="sport-card football" style="background-image: url('./images/football.jpg');">
+
+                </div>
+                <div class="sport-card badminton" style="background-image: url('./images/badminton.jpg');">
+
+                </div>
+                <div class="sport-card kabaddi" style="background-image: url('./images/kabbdi.jpg');">
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>View Website</h4>
+                <a href="#">English</a>
+                <a href="#">Help Center</a>
+                <a href="#">Share Feedback</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Need Help?</h4>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect with us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 JioHotstar. All rights reserved.</p>
+            <p>
+                <a href="#">Terms of Use</a> |
+                <a href="#">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

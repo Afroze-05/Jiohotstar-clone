@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search | JioHotstar</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f0f0f;
+            font-family: Arial, sans-serif;
+        }
+
+        /* LAYOUT */
+        .page {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background: #000;
+            padding: 100px 6px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+            color: #b3b3b3;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #1f1f1f;
+            color: #fff;
+        }
+
+        .sidebar a::after {
+            content: attr(data-label);
+            position: absolute;
+            left: 70px;
+            background: #1f1f1f;
+            padding: 6px 12px;
+            border-radius: 6px;
+            opacity: 0;
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        .sidebar a:hover::after {
+            opacity: 1;
+        }
+
+        /* CONTENT */
+        .content {
+            padding: 30px;
+        }
+
+        /* SEARCH BAR */
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #3d3c3c;
+            padding: 16px 28px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            margin-left: 100px;
+            margin-right: 100px;
+
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        /* TRENDING */
+        .trending {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        /* DOCUMENTRY */
+        .documentry h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .doc-flex {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* CARD */
+        .doc-card {
+            position: relative;
+            width: 200px;
+            height: 240px;
+        }
+
+        .doc-card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        /* POPUP */
+        .popup {
+            position: absolute;
+            inset: -30px;
+            background-image: var(--bg);
+            background-size: cover;
+            border-radius: 14px;
+            padding: 16px;
+            opacity: 0;
+            transform: scale(0.85);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: #fff;
+        }
+
+        .doc-card:hover .popup {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .popup::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #000, transparent);
+            border-radius: 14px;
+            z-index: -1;
+        }
+
+        .popup button {
+            background: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            background: #000;
+            padding: 40px;
+            color: #b3b3b3;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer h4 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                <li><a href="searchjio.html"><i class=" fa-solid fa-magnifying-glass"></i><span>Search</span></a></li>
+                <li><a href="index.html"><i class="fa-solid fa-tv"></i><span>TV</span></a></li>
+                <li><a href="index.html"><i class="fa-solid fa-film"></i><span>Movies</span></a></li>
+                <li><a href="index.html"><i class="fa-solid fa-person-running"></i><span>Sports</span></a></li>
+                <li><a href="index.html"><i class="fa-solid fa-bolt"></i><span>Sparks</span></a></li>
+                <li><a href="category.html"><i class="fa-solid fa-layer-group"></i><span>Categories</span></a></li>
+                <li><a href="myspace.html"><i class="fa-solid fa-user"></i><span>My Space</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+
+            <!-- SEARCH BAR -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Movies, Shows and More">
+            </div>
+
+            <h2 class="trending">Trending in India</h2>
+            <div class="documentry">
+                <div class="doc-flex">
+                    <div class="doc-card" style="--bg:url('./images/doc27.jpg')">
+                        <img src="./images/doc27.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc28.jpg')">
+                        <img src="./images/doc28.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc29.jpg')">
+                        <img src="./images/doc29.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc18.jpg')">
+                        <img src="./images/doc18.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc19.jpg')">
+                        <img src="./images/doc19.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>2024 • Season 1 • Hindi</h3>
+                            <p>Chef Ranveer Brar’s journey.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc20.jpg')">
+                        <img src="./images/doc20.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>2025 • U/A • English</h3>
+                            <p>From startup to big brands.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc21.jpg')">
+                        <img src="./images/doc21.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>2025 • U/A+13</h3>
+                            <p>Trials of revolutionaries.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--end -->
+            <div class="documentry">
+                <div class="doc-flex">
+                    <div class="doc-card" style="--bg:url('./images/doc1.jpg')">
+                        <img src="./images/doc1.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc2.jpg')">
+                        <img src="./images/doc2.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc3.jpg')">
+                        <img src="./images/doc3.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc4.jpg')">
+                        <img src="./images/doc4.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>Planet Earth</h3>
+                            <p>Explore our planet’s beauty.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url(./images/'doc5.jpg')">
+                        <img src="./images/doc5.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>2024 • Season 1 • Hindi</h3>
+                            <p>Chef Ranveer Brar’s journey.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc6.jpg')">
+                        <img src="./images/doc6.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>2025 • U/A • English</h3>
+                            <p>From startup to big brands.</p>
+                        </div>
+                    </div>
+
+                    <div class="doc-card" style="--bg:url('./images/doc7.jpg')">
+                        <img src="./images/doc7.jpg">
+                        <div class="popup">
+                            <button>Watch Now</button>
+                            <h3>2025 • U/A+13</h3>
+                            <p>Trials of revolutionaries.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer>
+                <div class="footer-container">
+
+                    <div class="footer">
+                        <h4>Company</h4>
+                        <p>About Us</p>
+                        <p>Careers</p>
+                    </div>
+
+                    <div class="footer">
+                        <h4>View Website</h4>
+                        <p>English</p>
+                        <p>Help Center</p>
+                        <p>Share Feedback</p>
+                    </div>
+
+                    <div class="footer">
+                        <h4>Need Help?</h4>
+                        <p>FAQ</p>
+                        <p>Contact Us</p>
+                    </div>
+
+                    <div class="footer">
+                        <h4>Connect with us</h4>
+                        <div class="social-icons">
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2025 JioHotstar. All rights reserved.</p>
+                    <p>Terms of Use | Privacy Policy</p>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

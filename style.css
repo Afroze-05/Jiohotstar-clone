@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f0f0f;
+    font-family: Arial, sans-serif;
+}
+
+
+.page {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    min-height: 100vh;
+}
+
+
+.sidebar {
+    background: #000;
+    padding: 100px 6px;
+    width: 100px;
+}
+
+/* LIST */
+.sidebar ul {
+    list-style: none;
+}
+
+/* ITEM */
+.sidebar li {
+    margin-bottom: 12px;
+}
+
+/* LINK */
+.sidebar a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    color: #b3b3b3;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ICON */
+.sidebar a i,
+.sidebar a .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* LABEL (HIDDEN) */
+.sidebar a::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 70px;
+    white-space: nowrap;
+    background: #1f1f1f;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #fff;
+
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+/* HOVER EFFECT */
+.sidebar a:hover {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+/* SHOW TEXT ON HOVER */
+.sidebar a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background: #000;
+    color: #b3b3b3;
+    padding: 40px 60px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.footer h4 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.footer p {
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.footer p:hover {
+    color: #fff;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons i {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header {
+    background: #0f0f0f;
+    height: 280px;
+    width: 100%;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+    /* ✅ THIS creates space */
+    background: #1c223b;
+    height: 270px;
+    width: 52%;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.header-content img {
+    max-width: 100%;
+    height: 270px;
+    padding: 0;
+    border-radius: 15px 0 0 15px;
+}
+
+
+.header-text {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+}
+
+
+#logo {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #000;
+}
+
+.bold-text {
+    font-size: 20px;
+    font-weight: 700;
+    /* bold */
+}
+
+.normal-text {
+    font-size: 16px;
+    font-weight: 400;
+    /* normal */
+    opacity: 0.85;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.trailer-btn {
+    margin-top: 10px;
+    padding: 8px 18px;
+    background: rgba(219, 207, 207, 0.795);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: 100px;
+
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.trailer-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+
+
+
+#logo {
+    width: 90px;
+    height: 90px;
+}
+
+.bold-text {
+    margin: 0;
+}
+
+.normal-text {
+    margin: 5px 0 0 0;
+}
+
+body {
+    background: #0f0f0f;
+    font-family: Arial, sans-serif;
+}
+
+/* SECTION */
+.documentry {
+    padding: 20px 40px;
+}
+
+.documentry h2 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+
+.doc-flex {
+    display: flex;
+    gap: 12px;
+}
+
+.doc-card {
+    position: relative;
+    width: 200px;
+    height: 240px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.doc-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.popup {
+    position: absolute;
+    inset: -30px;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 14px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 0.3s ease;
+
+    color: #fff;
+    z-index: 10;
+    pointer-events: none;
+    /* disabled until hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* ENABLE INTERACTION ON HOVER */
+.doc-card:hover .popup {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* DARK OVERLAY */
+.popup::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.85),
+            rgba(0, 0, 0, 0.3));
+    border-radius: 14px;
+    z-index: -1;
+}
+
+/* TEXT */
+.popup h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.popup p {
+    font-size: 12px;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+/* BUTTON */
+.popup button {
+    background: #d8cdcd;
+    border: none;
+    color: #000;
+    padding: 5px 11px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    height: 44px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.popup button:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+.popup a {
+    text-decoration: none;
+}
+
+.hotstar-banner {
+    position: relative;
+    width: 55%;
+    height: 590px;
+    overflow: hidden;
+
+    /* IMPORTANT */
+    background: transparent;
+}
+
+/* IMAGE */
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 100px;
+    /* sidebar width */
+    width: 100%;
+    height: 590px;
+
+    background: url("deshpande.jpg") center/cover no-repeat;
+    z-index: -1;
+
+    transition: opacity 1s ease;
+}
+
+/* VIDEO */
+.bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* DARK OVERLAY */
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.banner-text {
+    position: absolute;
+    left: 80px;
+    /* space from left */
+    top: 40%;
+    /* slightly below center */
+    transform: translateY(-50%);
+    color: #fff;
+    z-index: 2;
+}
+
+
+/* TAG */
+.tag {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.tag span {
+    font-style: italic;
+}
+
+.title {
+    font-weight: 800;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* Mrs. */
+.title sup.mrs {
+    font-size: 38px;
+    vertical-align: super;
+    margin-right: 6px;
+    color: #d60000;
+}
+
+/* Deshpande */
+.title .name {
+    font-size: 66px;
+    line-height: 1;
+}
+
+
+/* META */
+.meta {
+    font-size: 30px;
+    opacity: 0.85;
+    margin-bottom: 18px;
+}
+
+/* BUTTON */
+.watch-btn {
+    width: 340px;
+    height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    background: linear-gradient(135deg,
+            rgba(113, 181, 245, 0.9),
+            rgba(11, 106, 184, 0.9),
+            rgba(235, 46, 235, 0.9));
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.watch-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 90, 160, 0.5);
+}
